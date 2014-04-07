@@ -1,7 +1,9 @@
 from setuptools import setup, find_packages
 
+from pip.req import parse_requirements
 
-version = '0.1.0'
+
+version = '0.1.1'
 
 
 setup(name="helga-isup",
@@ -26,6 +28,9 @@ setup(name="helga-isup",
       license='GPLv3',
       packages=find_packages(),
       py_modules=['helga_isup'],
+      install_requires=[
+          str(req.req) for req in parse_requirements('requirements.txt')
+      ],
       entry_points = dict(
           helga_plugins=[
               'isup = helga_isup:isup'

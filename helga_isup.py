@@ -2,14 +2,12 @@ import re
 
 import requests
 
-from helga.plugins import command
+from twisted.internet import reactor
+
+from helga.plugins import command, ResponseNotReady
 
 
-@command('isup', aliases=['downforeveryoneorjustme'],
-         help='Is foo.com up? Usage: helga [isup|downforeveryoneorjustme] <domain>')
-def isup(client, channel, nick, message, cmd, args):
-    domain = args[0]
-
+def do_isup(client, channel, domain):
     resp = requests.get('http://isup.me/{domain}'.format(domain=domain))
     resp.raise_for_status()
 
@@ -24,4 +22,11 @@ def isup(client, channel, nick, message, cmd, args):
     status = re.sub(r'[\s]+', ' ', status)
 
     # Strip entities
-    return status.replace('&#x2F;', '/')
+    client.msg(channel, status.replace('&#x2F;', '/'))
+
+
+@command('isup', aliases=['downforeveryoneorjustme'],
+         help='Is foo.com up? Usage: helga [isup|downforeveryoneorjustme] <domain>')
+def isup(client, channel, nick, message, cmd, args):
+    reactor.callLater(0, do_isup, client, channel, args[0])
+    raise ResponseNotReady

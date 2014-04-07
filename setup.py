@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 from pip.req import parse_requirements
 
 
-version = '0.1.1'
+version = '0.2.0'
 
 
 setup(name="helga-isup",

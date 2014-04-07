@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 from pip.req import parse_requirements
 
 
-version = '0.2.1'
+version = '0.2.2'
 
 
 setup(name="helga-isup",
@@ -13,7 +13,7 @@ setup(name="helga-isup",
           'Development Status :: 4 - Beta',
           'Topic :: Communications :: Chat :: Internet Relay Chat',
           'Framework :: Twisted',
-          'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+          'License :: OSI Approved :: MIT License',
           'Operating System :: OS Independent',
           'Programming Language :: Python',
           'Programming Language :: Python :: 2',
@@ -25,7 +25,7 @@ setup(name="helga-isup",
       author='Shaun Duncan',
       author_email='shaun.duncan@gmail.com',
       url='https://github.com/shaunduncan/helga-isup',
-      license='GPLv3',
+      license='MIT',
       packages=find_packages(),
       py_modules=['helga_isup'],
       install_requires=[

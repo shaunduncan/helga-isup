@@ -1,1 +1,2 @@
-requests==2.2.1
+requests
+parse_requirements_not_suckily

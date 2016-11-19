@@ -1,9 +1,6 @@
 from setuptools import setup, find_packages
-from parse_requirements_not_suckily import parse_requirements
 
-
-version = '0.2.3'
-
+version = '0.2.4'
 
 setup(
     name="helga-isup",
@@ -28,7 +25,9 @@ setup(
     license='MIT',
     packages=find_packages(),
     py_modules=['helga_isup'],
-    install_requires=parse_requirements(),
+    install_requires=(
+        'requests>=2.0',
+    ),
     entry_points=dict(
         helga_plugins=[
             'isup = helga_isup:isup'
